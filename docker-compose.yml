@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  database:
+    image: mariadb
+    environment:
+      - MYSQL_ROOT_PASSWORD=letmein2019
+      - MYSQL_DATABASE=levelupdb
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=letmein2019
+    ports:
+      - "33061:3306"
