@@ -4,14 +4,14 @@ const generateData = (count, user_id) => {
     const data = [];
 
     for (let i = 0; i < count; i++) {
-        const user = {
+        const users = {
             user_id,
             first_name: faker.name.firstName(),
             last_name: faker.name.lastName(),
             email: faker.internet.email().toLowerCase(),
         }
 
-        data.push(user);
+        data.push(users);
     }
 
     return data;
