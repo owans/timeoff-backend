@@ -5,10 +5,10 @@ module.exports = {
   development: {
     client: 'mysql',
     connection: {
-      port: 33061,
+      port: 3306,
       database: 'levelupdb',
-      user:     'admin',
-      password: 'letmein2019'
+      user:     'administrator',
+      password: 'Owans94$'
     },
     pool: {
       min: 2,

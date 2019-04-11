@@ -1,4 +1,3 @@
-
 exports.up = async function(knex, Promise) {
     try {
         const tableExists = await knex.schema.hasTable('employees');

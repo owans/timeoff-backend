@@ -1,10 +1,9 @@
-
 exports.up = async function(knex, Promise) {
     try {
         const tableExists = await knex.schema.hasTable('employees');
         if (tableExists) {
             return knex.schema.table('employees', function (table) {
-                table.timestamps();
+                table.integer('organization_id').after('id');
             });
         } else {
             console.log('Employees table does not exist');
@@ -20,7 +19,7 @@ exports.down = async function(knex, Promise) {
         const tableExists = await knex.schema.hasTable('employees');
         if (tableExists) {
             return knex.schema.table('employees', function (table) {
-                table.dropTimestamps();
+                table.dropColumn('organization_id');
             });
         } else {
             console.log('Employees table does not exist');
