@@ -56,33 +56,14 @@ exports.seed = function(knex, Promise) {
 
       return Promise.all(employeePromises);
     })
-    .then(function(users) {
-      const userPromises = [];
-      users
-        .map(userID => {
-          return {
-            users: users
-          }
-        })
-        .forEach(orgUsers => {
-          userPromises.push(createUsers(knex, orgUsers.users));
-        });
-        console.log(userPromises)
-      return Promise.all(userPromises);
+    .then(function () {
+      return knex('users').insert(users);
     })
-    .then(function(organizations) {
-      const requestPromises = [];
-      organizations
-        .map(reqID => {
-          return {
-            request: request.gen(5, reqID)
-          }
-        })
-        .forEach(orgRequest => {
-          requestPromises.push(createRequest(knex, orgRequest.request));
-        });
 
-      return Promise.all(requestPromises);
+    .then(function () {
+      return knex('request').insert(request);
     })
+    
+    return Promise.all();
 };
 
