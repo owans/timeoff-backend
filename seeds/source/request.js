@@ -17,8 +17,8 @@ const generateData = (count) => {
     for (let i = 0; i < count; i++) {
         const request = {
             request_type: timeOffTypes[randNo(8)],
-            startDate,
-            endDate,
+            start: startDate,
+            end: endDate,
             request_status: requestStatus
         }
 

@@ -5,6 +5,9 @@ const Users = orm.Model.extend({
     hasTimestamps: true,
     request: function() {
         return this.hasMany('request');
+    },
+    employee: function(){
+        return this.belongsTo('employees')
     }
 });
 

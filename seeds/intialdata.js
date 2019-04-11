@@ -56,13 +56,23 @@ exports.seed = function(knex, Promise) {
 
       return Promise.all(employeePromises);
     })
-    .then(function () {
-      return knex('users').insert(users);
+    .then(function(users) {
+      const userPromises = [];
+      users
+        .map(userID => {
+          return {
+            users: users
+          }
+        })
+        .forEach(orgUsers => {
+          userPromises.push(createUsers(knex, orgUsers.users));
+        });
+        console.log(userPromises)
+      return Promise.all(userPromises);
     })
-
-    .then(function() {
+    .then(function(organizations) {
       const requestPromises = [];
-      request
+      organizations
         .map(reqID => {
           return {
             request: request.gen(5, reqID)
