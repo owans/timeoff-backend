@@ -4,12 +4,18 @@ exports.up = async function(knex, Promise) {
         if (!tableExists) {
             return knex.schema.createTable('requests', function (table) {
                 table.increments();
-                table.string('user_id').notNullable();
-                table.string('request_type').notNullable();
-                table.string('start_date').notNullable();
-                table.string('end_date').notNullable();
-                table.string('request_status').notNullable();
+                table.integer('user_id').notNullable();
+                table.integer('organization_id').notNullable();
+                table.string('employee_id',).notNullable();
+                table.string('request_type', 100).default('causal');
+                table.string('relief_employee_id').nullable();
+                table.text('notes').nullable();
+                table.date('start_date').notNullable();
+                table.date('end_date').notNullable();
+                table.integer('duration').notNullable();
                 table.timestamps();
+
+                table.index('request_type');
             });
         } else {
             console.log('Table already exist');
@@ -23,4 +29,3 @@ exports.up = async function(knex, Promise) {
 exports.down = function(knex, Promise) {
     return knex.schema.dropTableIfExists('requests');
 };
-

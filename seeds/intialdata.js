@@ -56,14 +56,4 @@ exports.seed = function(knex, Promise) {
 
       return Promise.all(employeePromises);
     })
-    .then(function () {
-      return knex('users').insert(users);
-    })
-
-    .then(function () {
-      return knex('request').insert(request);
-    })
-    
-    return Promise.all();
-};
-
+  }
